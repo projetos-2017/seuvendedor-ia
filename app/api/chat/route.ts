@@ -6,7 +6,7 @@ import { looksLikeInjectionAttempt } from '@/lib/server/inputGuard';
 import { SAVE_LEAD_TOOL, type LeadData } from '@/lib/server/leadTool';
 import { saveLead, markLeadEmailSent } from '@/lib/server/firestore';
 import { draftLeadEmail } from '@/lib/server/draftLeadEmail';
-import { sendEmail } from '@/lib/server/resend';
+import { sendEmail } from '@/lib/server/brevo';
 import { isRateLimited } from '@/lib/server/rateLimit';
 
 const MAX_HISTORY_MESSAGES = 20;
