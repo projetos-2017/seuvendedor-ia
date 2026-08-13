@@ -1,5 +1,5 @@
 {
-  "name": "atendimento-cliente-ia-next",
+  "name": "atendimento-cliente-ia",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "firebase-admin": "^14.2.0",
     "next": "16.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
