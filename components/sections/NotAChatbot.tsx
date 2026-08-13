@@ -30,7 +30,7 @@ export function NotAChatbot() {
             </ul>
           </div>
           <div className="rounded-2xl border border-brand-400/30 bg-brand-500/5 p-8">
-            <p className="text-sm font-medium text-brand-300">Agente comercial</p>
+            <p className="text-sm font-medium text-brand-600">Agente comercial</p>
             <ul className="mt-5 space-y-3">
               {AGENT.map((item) => (
                 <li key={item} className="text-sm text-ink-100">

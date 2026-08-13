@@ -7,7 +7,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-ink-800/80 bg-ink-950/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="/" className="text-sm font-semibold tracking-tight text-ink-50">
-          Seu Vendedor<span className="text-brand-400">IA</span>
+          Seu Vendedor<span className="text-brand-600">IA</span>
         </a>
         <a
           href="#agente"

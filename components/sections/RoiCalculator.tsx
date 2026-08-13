@@ -77,11 +77,11 @@ export function RoiCalculator() {
             />
           </div>
 
-          <div className="flex flex-col justify-center rounded-xl bg-ink-950 p-8 text-center">
+          <div className="flex flex-col justify-center rounded-xl bg-ink-950 p-8 text-center shadow-soft">
             <p className="text-xs font-medium uppercase tracking-wide text-ink-500">
               Potencial estimado
             </p>
-            <p className="mt-3 text-3xl font-medium text-brand-300">
+            <p className="mt-3 text-3xl font-medium text-brand-600">
               +{Math.round(estimate.potentialAdditionalSales)} vendas/mês
             </p>
             <p className="mt-2 text-sm text-ink-400">
@@ -114,7 +114,7 @@ function Field({
         inputMode="decimal"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-2 w-full rounded-lg border border-ink-700 bg-ink-950 px-3 py-2 text-sm text-ink-50 outline-none focus:border-brand-400"
+        className="mt-2 w-full rounded-lg border border-ink-700 bg-ink-950 px-3 py-2 text-sm text-ink-100 outline-none focus:border-brand-400"
       />
     </label>
   );

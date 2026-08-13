@@ -36,7 +36,7 @@ export function BeforeAfter() {
             </ul>
           </div>
           <div className="rounded-2xl border border-brand-400/30 bg-brand-500/5 p-8">
-            <p className="text-xs font-medium uppercase tracking-wide text-brand-300">Depois</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-brand-600">Depois</p>
             <ul className="mt-5 space-y-3">
               {AFTER.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-ink-100">
