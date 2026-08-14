@@ -23,7 +23,12 @@ export function ChatWidget({ segment }: ChatWidgetProps) {
   }, [segment]);
 
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
+    if (!scrollRef.current) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    scrollRef.current.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
   }, [messages, isLoading]);
 
   function handleSubmit(e: React.FormEvent) {
@@ -36,7 +41,7 @@ export function ChatWidget({ segment }: ChatWidgetProps) {
   return (
     <div className="flex w-full max-w-md flex-col overflow-hidden rounded-2xl border border-ink-700 bg-ink-900 shadow-lifted">
       <div className="flex items-center gap-3 border-b border-ink-700 bg-ink-800 px-4 py-3">
-        <span className="relative flex h-2.5 w-2.5">
+        <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-500 opacity-75" />
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-signal-500" />
         </span>
@@ -46,7 +51,13 @@ export function ChatWidget({ segment }: ChatWidgetProps) {
         </div>
       </div>
 
-      <div ref={scrollRef} className="flex h-96 flex-col gap-3 overflow-y-auto px-4 py-4">
+      <div
+        ref={scrollRef}
+        role="log"
+        aria-live="polite"
+        aria-label="Conversa com o agente"
+        className="flex h-80 flex-col gap-3 overflow-y-auto px-4 py-4 sm:h-96"
+      >
         {messages.map((message) => (
           <div
             key={message.id}
@@ -60,13 +71,18 @@ export function ChatWidget({ segment }: ChatWidgetProps) {
           </div>
         ))}
         {isLoading && (
-          <div className="mr-auto flex items-center gap-1 rounded-xl bg-ink-800 px-3.5 py-2.5">
-            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-400 [animation-delay:-0.3s]" />
-            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-400 [animation-delay:-0.15s]" />
-            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-400" />
+          <div role="status" className="mr-auto flex items-center gap-1 rounded-xl bg-ink-800 px-3.5 py-2.5">
+            <span className="sr-only">Agente está digitando</span>
+            <span aria-hidden="true" className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-400 [animation-delay:-0.3s]" />
+            <span aria-hidden="true" className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-400 [animation-delay:-0.15s]" />
+            <span aria-hidden="true" className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-400" />
           </div>
         )}
-        {error && <p className="text-xs text-red-400">{error}</p>}
+        {error && (
+          <p role="alert" className="text-xs text-red-400">
+            {error}
+          </p>
+        )}
       </div>
 
       <form onSubmit={handleSubmit} className="flex items-center gap-2 border-t border-ink-700 bg-ink-800 p-3">
@@ -74,13 +90,14 @@ export function ChatWidget({ segment }: ChatWidgetProps) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Digite sua resposta..."
-          className="flex-1 rounded-lg border border-ink-600 bg-ink-900 px-3 py-2 text-sm text-ink-50 placeholder:text-ink-400 outline-none focus:border-brand-400"
+          aria-label="Digite sua resposta"
+          className="flex-1 rounded-lg border border-ink-600 bg-ink-900 px-3 py-2 text-sm text-ink-50 placeholder:text-ink-400 outline-none focus:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-400"
           disabled={isLoading}
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
         >
           Enviar
         </button>

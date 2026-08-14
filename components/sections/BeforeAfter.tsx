@@ -29,7 +29,7 @@ export function BeforeAfter() {
             <ul className="mt-5 space-y-3">
               {BEFORE.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-ink-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-ink-600" />
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ink-600" />
                   {item}
                 </li>
               ))}
@@ -40,7 +40,7 @@ export function BeforeAfter() {
             <ul className="mt-5 space-y-3">
               {AFTER.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-ink-100">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-400" />
                   {item}
                 </li>
               ))}

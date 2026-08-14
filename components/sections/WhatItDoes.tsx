@@ -60,11 +60,17 @@ export function WhatItDoes({ headline = DEFAULT_HEADLINE, steps = DEFAULT_STEPS 
               key={step.number}
               className="flex items-start gap-4 rounded-xl border border-ink-800 bg-ink-900 p-5"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-500 text-sm font-medium text-white">
+              <span
+                aria-hidden="true"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-500 text-sm font-medium text-white"
+              >
                 {step.number}
               </span>
               <div>
-                <p className="text-sm font-medium text-ink-50">{step.title}</p>
+                <p className="text-sm font-medium text-ink-50">
+                  <span className="sr-only">Passo {step.number}: </span>
+                  {step.title}
+                </p>
                 <p className="mt-1 text-sm leading-relaxed text-ink-400">{step.example}</p>
               </div>
             </div>

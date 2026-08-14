@@ -22,7 +22,11 @@ export function HowItWorks() {
               <span className="rounded-full border border-ink-700 bg-ink-900 px-4 py-2 text-sm text-ink-200">
                 {step}
               </span>
-              {i < STEPS.length - 1 && <span className="text-ink-600">→</span>}
+              {i < STEPS.length - 1 && (
+                <span aria-hidden="true" className="text-ink-600">
+                  →
+                </span>
+              )}
             </div>
           ))}
         </div>

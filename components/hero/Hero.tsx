@@ -31,7 +31,7 @@ export function Hero({
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-[radial-gradient(ellipse_at_top,_var(--color-brand-600)_0%,_transparent_60%)] opacity-20"
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1.1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-2 lg:grid-cols-[1.1fr_1fr]">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900 px-3 py-1 text-xs font-medium text-ink-300">
             {badge}
@@ -45,14 +45,14 @@ export function Hero({
             <a
               href="#agente"
               onClick={() => trackEvent('hero_cta_click', { source: 'hero_primary' })}
-              className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-600"
+              className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
             >
               Converse com o agente
             </a>
             <a
               href="#cta-final"
               onClick={() => trackEvent('hero_cta_click', { source: 'hero_secondary' })}
-              className="rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-100 transition hover:border-ink-500"
+              className="rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-100 transition hover:border-ink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
             >
               Quero um agente para minha empresa
             </a>

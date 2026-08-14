@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="text-xs uppercase tracking-wide text-ink-500">
             {formatDate(post.frontmatter.publishedAt)}
           </p>
-          <h1 className="mt-2 text-4xl font-medium tracking-tight text-ink-50">
+          <h1 className="mt-2 text-4xl font-medium tracking-tight text-ink-50 sm:text-5xl">
             {post.frontmatter.title}
           </h1>
           <p className="mt-4 text-lg text-ink-300">{post.frontmatter.excerpt}</p>

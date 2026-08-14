@@ -17,14 +17,14 @@ export function FinalCta({ headline = DEFAULT_HEADLINE }: FinalCtaProps) {
           <a
             href="#agente"
             onClick={() => trackEvent('hero_cta_click', { source: 'final_cta_primary' })}
-            className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-600"
+            className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
           >
             Converse com o agente
           </a>
           <a
             href="#agente"
             onClick={() => trackEvent('demo_requested', { source: 'final_cta_secondary' })}
-            className="rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-100 transition hover:border-ink-500"
+            className="rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-100 transition hover:border-ink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
           >
             Quero uma demonstração personalizada
           </a>

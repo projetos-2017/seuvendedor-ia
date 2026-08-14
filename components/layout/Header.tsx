@@ -13,17 +13,23 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-800/80 bg-ink-950/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" className="text-sm font-semibold tracking-tight text-ink-50">
+        <a
+          href="/"
+          className="rounded text-sm font-semibold tracking-tight text-ink-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+        >
           Seu Vendedor<span className="text-brand-600">IA</span>
         </a>
         <nav className="flex items-center gap-6">
-          <a href="/blog" className="text-sm font-medium text-ink-300 transition hover:text-ink-50">
+          <a
+            href="/blog"
+            className="rounded text-sm font-medium text-ink-300 transition hover:text-ink-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+          >
             Blog
           </a>
           <a
             href={agentHref}
             onClick={() => trackEvent('hero_cta_click', { source: 'header' })}
-            className="rounded-full bg-ink-50 px-4 py-2 text-sm font-medium text-ink-950 transition hover:bg-white"
+            className="rounded-full bg-ink-50 px-4 py-2 text-sm font-medium text-ink-950 transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
           >
             Converse com o agente
           </a>

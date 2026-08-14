@@ -13,7 +13,7 @@ export function HumanControl() {
               key={item}
               className="flex items-center gap-3 rounded-xl border border-ink-800 bg-ink-900 px-5 py-4 text-sm text-ink-200"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-400" />
               {item}
             </li>
           ))}

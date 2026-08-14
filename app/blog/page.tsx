@@ -27,7 +27,7 @@ export default function BlogIndexPage() {
       <Header />
       <main className="px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <h1 className="text-4xl font-medium tracking-tight text-ink-50">Blog</h1>
+          <h1 className="text-4xl font-medium tracking-tight text-ink-50 sm:text-5xl">Blog</h1>
           <p className="mt-4 text-lg text-ink-300">
             Conteúdo sobre agentes de IA comerciais, automação de vendas e qualificação de leads.
           </p>
@@ -37,7 +37,7 @@ export default function BlogIndexPage() {
               <Link
                 key={post.frontmatter.slug}
                 href={`/blog/${post.frontmatter.slug}`}
-                className="block rounded-xl border border-ink-800 bg-ink-900 p-6 transition hover:border-brand-400"
+                className="block rounded-xl border border-ink-800 bg-ink-900 p-6 transition hover:border-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
               >
                 <p className="text-xs uppercase tracking-wide text-ink-500">
                   {formatDate(post.frontmatter.publishedAt)}
