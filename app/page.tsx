@@ -5,6 +5,7 @@ import { Hero } from '@/components/hero/Hero';
 import { PainSection } from '@/components/sections/PainSection';
 import { BeforeAfter } from '@/components/sections/BeforeAfter';
 import { HowItWorks } from '@/components/sections/HowItWorks';
+import { WhatItDoes } from '@/components/sections/WhatItDoes';
 import { NotAChatbot } from '@/components/sections/NotAChatbot';
 import { Personalization } from '@/components/sections/Personalization';
 import { RoiCalculator } from '@/components/sections/RoiCalculator';
@@ -27,6 +28,7 @@ export default function Home() {
         <PainSection />
         <BeforeAfter />
         <HowItWorks />
+        <WhatItDoes />
         <NotAChatbot />
         <Personalization />
         <RoiCalculator />

@@ -8,18 +8,21 @@ interface HeroProps {
   badge?: string;
   headline?: string;
   subheadline?: string;
+  reassurance?: string;
   segment?: Segment;
 }
 
 const DEFAULT_BADGE = 'Agente comercial de IA para empresas B2B';
 const DEFAULT_HEADLINE = 'Seu próximo vendedor pode começar agora.';
 const DEFAULT_SUBHEADLINE =
-  'Um agente de IA que atende seus leads, entende o que eles precisam, responde dúvidas, qualifica oportunidades e faz follow-up automaticamente.';
+  'Ele atende seus leads, qualifica oportunidades e faz follow-up automaticamente — sem substituir sua equipe comercial.';
+const DEFAULT_REASSURANCE = 'Veja funcionando antes de contratar.';
 
 export function Hero({
   badge = DEFAULT_BADGE,
   headline = DEFAULT_HEADLINE,
   subheadline = DEFAULT_SUBHEADLINE,
+  reassurance = DEFAULT_REASSURANCE,
   segment,
 }: HeroProps) {
   return (
@@ -37,6 +40,7 @@ export function Hero({
             {headline}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-300">{subheadline}</p>
+          <p className="mt-3 text-base font-medium text-brand-600">{reassurance}</p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#agente"

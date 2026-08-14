@@ -12,13 +12,13 @@ export function renderOgImage(headline: string, badge: string) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#0a0a0f',
+          background: '#ffffff',
           padding: '80px',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 32, fontWeight: 600, color: '#f5f5f8' }}>
-          Seu Vendedor<span style={{ color: '#6360f2' }}>IA</span>
+        <div style={{ display: 'flex', fontSize: 32, fontWeight: 600, color: '#18181f' }}>
+          Seu Vendedor<span style={{ color: '#4f46e5' }}>IA</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div
@@ -26,8 +26,8 @@ export function renderOgImage(headline: string, badge: string) {
               display: 'flex',
               alignSelf: 'flex-start',
               fontSize: 22,
-              color: '#9d9da8',
-              border: '1px solid #34353f',
+              color: '#8a8a97',
+              border: '1px solid #d5d5dd',
               borderRadius: 999,
               padding: '8px 20px',
             }}
@@ -39,7 +39,7 @@ export function renderOgImage(headline: string, badge: string) {
               display: 'flex',
               fontSize: 56,
               fontWeight: 600,
-              color: '#f5f5f8',
+              color: '#18181f',
               lineHeight: 1.15,
               maxWidth: 980,
             }}

@@ -14,23 +14,23 @@ function formatCurrency(value: number): string {
 
 export function RoiCalculator() {
   const [leadsPerMonth, setLeadsPerMonth] = useState('150');
+  const [followedUpRate, setFollowedUpRate] = useState('40');
   const [averageTicket, setAverageTicket] = useState('2500');
   const [conversionRate, setConversionRate] = useState('12');
-  const [followedUpRate, setFollowedUpRate] = useState('40');
   const [used, setUsed] = useState(false);
 
   const estimate = useMemo(() => {
     const leads = parseNumber(leadsPerMonth);
+    const followedUp = parseNumber(followedUpRate) / 100;
     const ticket = parseNumber(averageTicket);
     const conversion = parseNumber(conversionRate) / 100;
-    const followedUp = parseNumber(followedUpRate) / 100;
 
-    const unfollowedLeads = leads * (1 - followedUp);
+    const unfollowedLeads = Math.round(leads * (1 - followedUp));
     const potentialAdditionalSales = unfollowedLeads * conversion;
     const potentialAdditionalRevenue = potentialAdditionalSales * ticket;
 
-    return { potentialAdditionalSales, potentialAdditionalRevenue };
-  }, [leadsPerMonth, averageTicket, conversionRate, followedUpRate]);
+    return { unfollowedLeads, potentialAdditionalSales, potentialAdditionalRevenue };
+  }, [leadsPerMonth, followedUpRate, averageTicket, conversionRate]);
 
   function handleChange(setter: (v: string) => void) {
     return (value: string) => {
@@ -46,11 +46,11 @@ export function RoiCalculator() {
     <section className="border-t border-ink-800 px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <h2 className="text-3xl font-medium tracking-tight text-ink-50 sm:text-4xl">
-          Simule seu potencial
+          Veja quantas oportunidades podem estar sem acompanhamento
         </h2>
         <p className="mt-4 max-w-2xl text-ink-300">
-          Uma simulação simples com base nos seus números. Os resultados reais variam conforme o
-          seu processo comercial.
+          Um cálculo simples com base nos seus números. Os resultados reais variam conforme o seu
+          processo comercial.
         </p>
 
         <div className="mt-10 grid gap-8 rounded-2xl border border-ink-800 bg-ink-900 p-8 lg:grid-cols-2">
@@ -59,6 +59,11 @@ export function RoiCalculator() {
               label="Leads por mês"
               value={leadsPerMonth}
               onChange={handleChange(setLeadsPerMonth)}
+            />
+            <Field
+              label="% de leads acompanhados hoje"
+              value={followedUpRate}
+              onChange={handleChange(setFollowedUpRate)}
             />
             <Field
               label="Ticket médio (R$)"
@@ -70,23 +75,29 @@ export function RoiCalculator() {
               value={conversionRate}
               onChange={handleChange(setConversionRate)}
             />
-            <Field
-              label="% de leads acompanhados hoje"
-              value={followedUpRate}
-              onChange={handleChange(setFollowedUpRate)}
-            />
           </div>
 
           <div className="flex flex-col justify-center rounded-xl bg-ink-950 p-8 text-center shadow-soft">
             <p className="text-xs font-medium uppercase tracking-wide text-ink-500">
-              Potencial estimado
+              Oportunidades sem acompanhamento
             </p>
             <p className="mt-3 text-3xl font-medium text-brand-600">
-              +{Math.round(estimate.potentialAdditionalSales)} vendas/mês
+              ≈ {estimate.unfollowedLeads} leads/mês
             </p>
             <p className="mt-2 text-sm text-ink-400">
-              {formatCurrency(estimate.potentialAdditionalRevenue)} em receita adicional estimada
+              Essas são as oportunidades que seu agente pode ajudar sua equipe a acompanhar.
             </p>
+
+            <div className="mt-6 border-t border-ink-800 pt-6">
+              <p className="text-xs font-medium uppercase tracking-wide text-ink-500">
+                Estimativa de impacto financeiro
+              </p>
+              <p className="mt-2 text-lg font-medium text-ink-100">
+                +{Math.round(estimate.potentialAdditionalSales)} vendas/mês ·{' '}
+                {formatCurrency(estimate.potentialAdditionalRevenue)}
+              </p>
+            </div>
+
             <p className="mt-6 text-xs text-ink-600">
               Simulação baseada nos leads não acompanhados hoje. Não é uma garantia de resultado.
             </p>
